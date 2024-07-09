@@ -1,0 +1,27 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Category {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Faq {
+  id        String    @id @default(cuid())
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  question  String?
+  answer    String?
+  langcode  String?
+  status    Boolean?
+  faqOrder  Int?
+  created   DateTime?
+  changed   DateTime?
+}
